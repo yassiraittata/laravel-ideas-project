@@ -16,6 +16,12 @@ class DashboardController extends Controller
         $idea->save();
 
 
-        return view("dashboard", ["ideas" => Idea::all()]);
+        return view(
+            "dashboard",
+            [
+                // "ideas" => Idea::all()
+                "ideas" => Idea::orderBy('created_at', 'DESC')->get()
+            ]
+        );
     }
 }
