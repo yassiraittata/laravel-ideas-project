@@ -12,6 +12,11 @@ class IdeaController extends Controller
         // dump(request()->get('idea', null));
         $idea_content = request()->get('idea', null);
 
+        // * validation
+        request()->validate([
+            "idea" => 'required|min:5|max:255'
+        ]);
+
         // * first method to create an item
         // $idea = new Idea([
         //     "content" => $idea_content
